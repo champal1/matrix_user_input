@@ -1,0 +1,57 @@
+import numpy as np
+#matrix operation
+#Create a 2D array (matrix) using user input
+
+def main():
+    #using try, also I need to try other options besides if, elif, else, so start using range or try
+    #This is a while loop with try
+    while True:
+        #try to get input from user
+        try:
+            #ask for the amount of rows and columns
+            rows = int(input("How many rows: "))
+            columns = int(input("How many columns: "))
+            #once given the rows and columns, break out of loop
+            break
+        #Have value error if the user doesn't put number
+        except ValueError:
+            print("Not a number, try again")
+    #another while loop and try, get the numbers that will be in the matrix array, based on the amount of
+    #rows and columns
+    while True:
+        try:
+            #This is ask user for the numbers for the array
+            #List is to convert the values into a list, map(int...) is to convert each string into a int in the list
+            combine_them = list(map(int, input(f"Enter {rows * columns} numbers separated by spaces: ").split()))
+            #after multiplying the rows and columns, the user must enter the exact number that is printed out
+            #if the user doesn't type the exact amount, error
+            if len(combine_them) != rows * columns:
+                print(f"Not the needed number, you must enter exactly {rows * columns} numbers.")
+                continue
+            #break from loop if the input is valid
+            break
+            #Valueerror, if there is no int
+        except ValueError:
+            print("Only numbers.")
+    #combine the user input numbers and the rows with the columns
+    together_added = np.array(combine_them).reshape(rows, columns)
+    #print out the results
+    print(together_added)
+
+#old code i did, need to try using try statement
+"""
+    while True:
+        ask_user = input("Welcome to your matrix, enter the amount of rows using number: ")
+        if ask_user == int:
+            print("Got it")
+        else:
+            print("Not a number")
+        ask_user_2 = input("How many columns: ")
+        if ask_user_2 == int:
+            print("Got it")
+        else:
+            print("Not a number")
+"""
+
+if __name__ == "__main__":
+    main()
